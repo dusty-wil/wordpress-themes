@@ -1019,6 +1019,12 @@ body
     padding: 0px;
 }
 
+.children
+{
+    list-style-type: none;
+    margin: 0px;
+}
+
 .comment-author a
 {
     color: #FFFAF5; 
