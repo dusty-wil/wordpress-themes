@@ -1077,7 +1077,7 @@ body
     color: #FFFAF5; 
 }
 
-#comment
+#comment, #author, #email
 {
     background-color: #FFFAF5; 
 }
@@ -1090,6 +1090,11 @@ body
     background-color: #FF8552;
     border: 0px;
     padding: 10px 15px;
+}
+
+.fax-number
+{
+    display: none;
 }
 
 /*--------------------------------------------------------------

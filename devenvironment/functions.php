@@ -129,6 +129,34 @@ function devenvironment_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'devenvironment_scripts' );
 
+
+/**
+ * get rid of URL field, add honeypot field
+ */
+function devenvironment_custom_fields($fields)
+{
+    unset($fields['url']);
+    $fields['fax_number'] = '
+        <input type="text" name="fax_number" value="" class="fax-number" tabindex="-1" autocomplete="off"/>
+    ';
+    return $fields;
+}
+add_filter('comment_form_default_fields', 'devenvironment_custom_fields');
+
+/**
+ * check honeypot field
+ */ 
+function devenvironment_check_honeypot($commentdata)
+{
+    $hp = $_POST['fax_number'];
+    if ($hp != "") {
+        wp_die(__( 'Could not submit comment at this time.' ) );    
+    }
+    return $commentdata;
+}
+add_filter('preprocess_comment', 'devenvironment_check_honeypot');
+
+
 /**
  * Implement the Custom Header feature.
  */
